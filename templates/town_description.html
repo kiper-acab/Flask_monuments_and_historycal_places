@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/town_description.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+<main>
+    <div class="btn btn-warning" onclick="location.href = '/towns'">Назад</div>
+    <br>
+    <br>
+    <h1>{{ town.name }}</h1>
+    <section class="town_description">
+        <article class="info">
+            <p>{{ town.description }}</p>
+            <h4 style="text-align: center; margin: 30px 0;">На данный момент температура в городе: {{ temperature }}°C</h4>
+            <img src="{{ url_for('static', filename='images/' ~ town.background) }}" class="container" alt="">
+        </article>
+        <article class="temperature" style="text-align: center; margin-top: 60px; margin-bottom: 60px;">
+            
+        </article>
+        <h1 style="margin-top: 50px; text-align: center;">Исторические места</h1>
+        <section class="monuments" style="margin-top: 50px; margin-bottom: 100px;">
+            {% for historical_place in historical_places %}
+            <div class="card" style="width: 400px;">
+                <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ historical_place.image) }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ historical_place.name }}</h5>
+                    <p class="card-text">{{ historical_place.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        <h1>Памятники</h1>
+        <section class="monuments" style="margin-bottom: 50px;">
+            {% for monument in monuments %}
+            <div class="card" style="width: 400px;">
+                <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ monument.image) }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ monument.name }}</h5>
+                    <p class="card-text">{{ monument.description }}</p>
+                    <a href="/monuments/{{ monument.id }}" class="btn btn-warning">Подробнее</a>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    
+        <h2>Комментарии</h2>
+        <article class="comments">
+            <form method="post">
+                <input type="text" class="form-control" placeholder="Введите ваш комментарий" name="text" aria-label="Username" aria-describedby="addon-wrapping">
+                <button type="submit" class="btn btn-warning" name="send">Отправить</button>
+            </form>
+        </article>
+        <article>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% if comments|length > 0 %}
+                {% for comment in comments %}
+                    <div class="card">
+                        <h5>{{ comment.username }} опубликовал(а)</h5>
+                        <p>{{ comment.body }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no_comments">Здесь ещё нету комментариев</p>
+            {% endif %}
+        </article>  
+    </section>
+</main>
+{% endblock %}

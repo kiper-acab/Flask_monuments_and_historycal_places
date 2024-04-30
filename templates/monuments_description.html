@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/monuments_description.css') }}">
+{% endblock %}
+
+{% block title %}
+    Описание памятника
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="btn btn-warning" onclick="location.href = document.referrer">Назад</div>
+    <br>
+    <br>
+    <h1>{{ monument.name }}</h1>
+    <section class="monument">
+        <article class="info">
+            {% for town in towns %}
+            {% if town.id == monument.town %}
+            <h2>{{ town }}</h2>
+            {% endif %}
+            {% endfor %}
+            <p>{{ monument.description }}</p>
+            <img src="{{ url_for('static', filename='images/' ~ monument.image) }}" alt="">
+        </article>
+        <iframe src="{{ monument.map }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+</main>
+{% endblock %}

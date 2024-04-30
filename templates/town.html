@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ town.name }}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="btn btn-warning" onclick="location.href = '/towns/'">Назад</div>
+    <br>
+    <br>
+    <h1>{{ town.name }}</h1>
+    <br>
+    <h2>Памятники</h2>
+    <section class="town">
+        {% for monument in monuments %}
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ monument.image) }}" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ monument.name }}</h5>
+                <p class="card-text">{{ monument.description }}</p>
+                <a href="/monuments/{{ monument.id }}" class="btn btn-warning">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <br>
+    <br>
+    <h2>Исторические места</h2>
+    <section class="historical_places">
+
+    </section>
+
+    
+</main>
+{% endblock %}
+

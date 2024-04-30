@@ -1,0 +1,60 @@
+.row {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+
+.card-body,
+.card {
+  width: 400px;
+}
+
+.card {
+  border-radius: 2%;
+}
+.card img {
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.row {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+
+.card {
+  width: 700px;
+  border-radius: 2%;
+}
+.card img {
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  padding: 0, 10px;
+}
+.card-body h5 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.card-body p {
+  font-size: 1rem;
+}
+.card-body a {
+  margin-top: 15px;
+}
+
+.card-text {
+  margin-bottom: auto;
+}/*# sourceMappingURL=monuments.css.map */

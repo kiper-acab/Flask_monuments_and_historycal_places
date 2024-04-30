@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Исторические места
+{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/historical_places.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="container">
+    <br>
+    <br>
+    <h1>Исторические места</h1>
+    <section class="historical_places">
+        {% for place in historical_places %}
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ place.image) }}" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ place.name }}</h5>
+                <p class="card-text">{{ place.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/authorization.css') }}">
+{% endblock %}
+
+{% block title %}
+    Авторизация
+{% endblock %}
+
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div>
+        <form method="POST" action="/login">
+            <div class="mb-3">  
+                <label for="exampleInputEmail1" class="form-label">Почта</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailtologin">
+                <div id="emailHelp" class="form-text">Введите вашу почту</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="passwordtologin">
+                <label><input type="checkbox" class="password-checkbox"> Показать пароль</label>
+            </div>
+            <button type="submit" class="btn btn-secondary container" name="login">Войти</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('exampleInputPassword1');
+            const passwordCheckbox = document.querySelector('.password-checkbox');
+    
+            passwordCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            });
+        });
+    </script>
+{% endblock %}

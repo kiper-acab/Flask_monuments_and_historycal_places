@@ -1,0 +1,35 @@
+main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main .town_description h2 {
+  margin: 2rem 0;
+}
+main .town_description .card {
+  margin-top: 30px;
+}
+main .town_description .card p {
+  margin-top: 20px;
+  margin: 0 30px;
+  padding-bottom: 20px;
+}
+
+.comments form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.comments form button {
+  margin: 0 20px;
+}
+
+.no_comments {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.alert {
+  margin-top: 20px;
+  text-align: center;
+}/*# sourceMappingURL=town_description.css.map */

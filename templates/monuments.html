@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Памятники
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/monuments.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="btn btn-warning" onclick="location.href = '/'">Назад</div>
+    <br>
+    <br>
+    <h1>Памятники</h1>
+    <section class="monuments">
+        {% for monument in monuments %}
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ monument.image) }}" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ monument.name }}</h5>
+                <p class="card-text">{{ monument.description }}</p>
+                <a href="/monuments/{{ monument.id }}" class="btn btn-warning">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

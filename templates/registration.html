@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="/registration">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Почта</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+            <div id="emailHelp" class="form-text">Введите вашу почту</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Имя пользователя</label>
+            <input type="text" class="form-control" id="exampleInputName1" name="name">
+            <div id="nameHelp" class="form-text">Введите имя, которое будут видеть все пользователи</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            <label><input type="checkbox" class="password-checkbox"> Показать пароль</label>
+        </div>
+        <button type="submit" class="btn btn-secondary container" name="register">Зарегистрироваться</button>
+    </form>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('exampleInputPassword1');
+            const passwordCheckbox = document.querySelector('.password-checkbox');
+
+            passwordCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,54 @@
+.row 
+    margin-top: 30px
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 40px 
+
+.card-body,
+.card
+    width: 400px    
+    
+
+.card
+    border-radius: 2%
+
+    img
+        height: 300px
+        object-fit: cover
+        
+
+.row 
+    margin-top: 30px
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 40px 
+
+
+.card
+    width: 700px    
+    border-radius: 2%
+
+    img
+        height: 100px
+        object-fit: cover
+
+.card-body
+    display: flex
+    flex-direction: column
+    align-items: flex-start 
+    width: 100% // Ширина карточки теперь будет соответствовать ширине .card
+    max-width: 100% // Устанавливаем максимальную ширину для случаев, когда контент меньше, чем .card
+    padding: 0, 10px // Пример отступов внутри карточки, можете настроить по своему усмотрению
+
+    h5
+        font-size: 1.5rem // Размер заголовка h5, можете настроить по своему усмотрению
+        margin-bottom: 10px // Пример отступа между заголовком и текстом, можете настроить по своему усмотрению
+
+    p
+        font-size: 1rem // Размер текста параграфа, можете настроить по своему усмотрению
+
+    a
+        margin-top: 15px
+
+.card-text
+    margin-bottom: auto
