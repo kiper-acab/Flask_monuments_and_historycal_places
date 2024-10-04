@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\rick4lderson\files\web\flask\hackaton\venv
+set VIRTUAL_ENV=C:\Users\Георгий\Desktop\Flask_monuments_and_historycal_places\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
